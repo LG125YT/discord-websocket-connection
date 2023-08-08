@@ -1,7 +1,7 @@
 import requests
 from websockets.sync.client import connect
-token = "MTExMjgyMjAwNzM0NTA4MjM2OA.ZL13Wg.5hxabJDNzw-40N1BV5IUePROSec1uHeY0HIBBA"
-base_url = "https://oldground.haydar.dev/api/v6"
+token = "TOKEN HERE"
+base_url = "https://hummus.sys42.net/api/v6"
 def check(content,channelID, memberID, guildID): #here is where all commands go
     args = content.split() #allows for argument detection in a bot command
     if args[0] == '!test':
@@ -14,13 +14,13 @@ def check(content,channelID, memberID, guildID): #here is where all commands go
           requests.post(url=f"{base_url}/channels/{channelID}/messages",headers=headers,data=data)
 
 def main(): #websocket connections and reconnections
-    with connect("wss://oldground-gateway.haydar.dev/?v=6&encoding=json") as websocket:
+    with connect("wss://hummus-gateway.sys42.net/?encoding=json&v=6") as websocket:
         print("restarting...")
         true = True
         websocket.send(json.dumps({
                 'op': 2,
                 'd': {
-                    'token': 'MTExMjgyMjAwNzM0NTA4MjM2OA.ZL13Wg.5hxabJDNzw-40N1BV5IUePROSec1uHeY0HIBBA',
+                    'token': token,
                 }
             }))
         while true:
