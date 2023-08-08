@@ -1,8 +1,9 @@
 # discord-websocket-connection
 Basic websocket connections specifically built for Discord and similar sites, can be used in old discord revivals like Hummus and Oldground.
 
-## Notice:
-If you are working with a website like Fosscord/Spacebar, please use [Fossbotpy](https://gitlab.com/arandomnewaccount/fossbotpy) instead.
+## Notices:
+- If you are working with a website like Fosscord/Spacebar, please use [Fossbotpy](https://gitlab.com/arandomnewaccount/fossbotpy) instead.
+- Sometimes the bot may show as online, even if the host file is not running. Idk why this happens.
 
 ## About:
 This project is made for Hummus, it provides a working bot to function on it. Hummus is a Discord 2016 revival.
