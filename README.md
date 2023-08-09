@@ -1,9 +1,9 @@
 # Hummus Websocket Bot
-Raw basic websocket connections specifically built for Hummus and similar sites (ig it can be used on discord too but why not just use [Discprd.py?](https://github.com/Rapptz/discord.py)), can be used in old discord revivals like Hummus and Oldground.
+Raw basic websocket connections specifically built for Hummus and similar sites (ig it can be used on discord too but why not just use [Discord.py?](https://github.com/Rapptz/discord.py)), can be used in old discord revivals like Hummus and Oldground.
 
 ## Notices:
 - If you are working with a website like Fosscord/Spacebar, please use [Fossbotpy](https://gitlab.com/arandomnewaccount/fossbotpy) instead.
-- Sometimes the bot may show as online, even if the host file is not running. Idk why this happens.
+- On Oldground the bot may show as online, even if the host file is not running. This is most likely a server error.
 
 ## About:
 This project is made for Hummus, it provides a working bot to function on it. Hummus is a Discord 2016 revival.
