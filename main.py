@@ -5,16 +5,20 @@ from websockets.sync.client import connect
 token = "TOKEN HERE"
 base_url = "https://hummus.sys42.net/api/v6"
 
-def check(content,channelID, memberID, guildID): #here is where all commands go
-    args = content.split() #allows for argument detection in a bot command
-    if args[0] == '!test':
-          headers = {
+def sendMessage(channelID, message): #send message function
+    headers = {
         'Authorization': f'Bot {token}',
         'Content-Type': 'application/json'
         }
-          data = json.dumps({'content': "test",
+    data = json.dumps({'content': message,
                             'tts': False})
-          requests.post(url=f"{base_url}/channels/{channelID}/messages",headers=headers,data=data)
+    requests.post(url=f"{base_url}/channels/{channelID}/messages",headers=headers,data=data)
+
+def check(content,channelID, memberID, guildID): #here is where all commands go
+    args = content.split() #makes arguments a thing, uses normal list format to split args
+
+    if args[0] == "!test": #command detection and response to command
+        sendMessage(channelID, "test")
 
 def main(): #websocket connections and reconnections
     with connect("wss://hummus-gateway.sys42.net/?encoding=json&v=6") as websocket:
