@@ -1,7 +1,10 @@
+import json
 import requests
 from websockets.sync.client import connect
+
 token = "TOKEN HERE"
 base_url = "https://hummus.sys42.net/api/v6"
+
 def check(content,channelID, memberID, guildID): #here is where all commands go
     args = content.split() #allows for argument detection in a bot command
     if args[0] == '!test':
