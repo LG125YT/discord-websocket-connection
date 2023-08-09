@@ -1,5 +1,5 @@
-# discord-websocket-connection
-Basic websocket connections specifically built for Discord and similar sites, can be used in old discord revivals like Hummus and Oldground.
+# Hummus Websocket Bot
+Raw basic websocket connections specifically built for Hummus and similar sites (ig it can be used on discord too but why not just use [Discprd.py?](https://github.com/Rapptz/discord.py)), can be used in old discord revivals like Hummus and Oldground.
 
 ## Notices:
 - If you are working with a website like Fosscord/Spacebar, please use [Fossbotpy](https://gitlab.com/arandomnewaccount/fossbotpy) instead.
