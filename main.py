@@ -14,11 +14,51 @@ def sendMessage(channelID, message): #send message function
                             'tts': False})
     requests.post(url=f"{base_url}/channels/{channelID}/messages",headers=headers,data=data)
 
-def check(content,channelID, memberID, guildID): #here is where all commands go
+def kick(guildID, userID): #kick a person
+    headers = {
+        'Authorization': f'Bot {token}',
+        'Content-Type': 'application/json'
+        }
+    requests.delete(url=f"{base_url}/guilds/{guildID}/members/{userID}", headers=headers)
+
+def nick(guildID,userID, nick): #set a person's nickname
+    headers = {
+        'Authorization': f'Bot {token}',
+        'Content-Type': 'application/json'
+        }
+    if nick == "None":
+        data = json.dumps({'nick': ""})
+    else:
+        data = json.dumps({'nick': nick})
+    requests.patch(url=f"{base_url}/guilds/{guildID}/members/{userID}",headers=headers,data=data)
+
+def check(content,channelID, memberID, guildID, data): #here is where all commands go
     args = content.split() #makes arguments a thing, uses normal list format to split args
 
     if args[0] == "!test": #command detection and response to command
         sendMessage(channelID, "test")
+
+    if args[0] == "!nick":
+        if len(args) > 2:
+            id = data['d']['mentions'][0]['id']
+            i = 0
+            name = args[2]
+            for word in args:
+                if i > 2:
+                    name = name + " " + word
+                i += 1
+            nick(guildID,id,name)
+            sendMessage(channelID,f"Nicked <@{id}> to '{str(name)}'")
+        else:
+            sendMessage(channelID,"**__Error:__ Please ping a user and specify a nickname for the user. To Clear a nickname, specify 'None'.**")
+
+    if args[0] == "!kick":
+        if len(args) > 1:
+            id = data['d']['mentions'][0]['id']
+            kick(guildID,id)
+            sendMessage(channelID,f"Successfully kicked <@{id}>")
+        else:
+            sendMessage(channelID, "**__Error:__ Please ping someone to kick them.**")
 
 def main(): #websocket connections and reconnections
     with connect("wss://hummus-gateway.sys42.net/?encoding=json&v=6") as websocket:
@@ -35,7 +75,7 @@ def main(): #websocket connections and reconnections
                 message = json.loads(websocket.recv())
                 print(f"Received: {message}")
                 if message['t'] == "MESSAGE_CREATE":
-                    check(message['d']['content'],message['d']['channel_id'],message['d']['author']['id'], message['d']['guild_id'])
+                    check(message['d']['content'],message['d']['channel_id'],message['d']['author']['id'], message['d']['guild_id'], message)
             except Exception as e: #if the server is not configured to constantly ping the bot so the websocket doesn't shut down, this reconnects the bot.
                  websocket.close()
                  print(f"""closing...
