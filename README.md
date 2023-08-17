@@ -11,4 +11,4 @@ This project is made for Hummus, it provides a working bot to function on it. Hu
 
 This project is very basic, its made for the people who are too lazy to go figure out websocket connections themselves.
 
-In the project's `check` function, all messages are checked and this is where you add new commands. The only command in this example is a simple response to a test command. Having your bot perform actions has to be done so through raw POST, GET, and PATCH requests to the API, since no wrapper is involved in this project. For information on Discord/Hummus's v6 API, read through [the documentation.](https://oldground.haydar.dev/developers/docs/intro)
+In the project's `check` function, all messages are checked and this is where you add new commands. The only command in this example is a simple response to a test command. Having your bot perform actions has to be done so through raw POST, GET, and PATCH requests to the API, since no wrapper is involved in this project. For information on Discord/Hummus's v6 API, read through [the documentation.](https://hummus.sys42.net/developers/docs/intro)
