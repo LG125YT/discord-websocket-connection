@@ -4,6 +4,7 @@ Raw basic websocket connections specifically built for Hummus and similar sites 
 ## Notices:
 - If you are working with a website like Fosscord/Spacebar, please use [Fossbotpy](https://gitlab.com/arandomnewaccount/fossbotpy) instead.
 - On Oldground the bot may show as online, even if the host file is not running. This is most likely a server error.
+- If you run into a 403 error when trying to connect to Hummus, I have no idea. Take it up with Ziad, I have the same problem and he doesn't know whats going on.
 
 ## About:
 This project is made for Hummus, it provides a working bot to function on it. Hummus is a Discord 2016 revival.
