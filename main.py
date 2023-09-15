@@ -1,6 +1,10 @@
 import json
 import requests
 from websockets.sync.client import connect
+import fake_useragent
+
+ua = fake_useragent.UserAgent(browsers=['chrome', "firefox", "opera", "safari", "edge", "internet explorer"])
+agent = ua.random
 
 token = "TOKEN HERE"
 base_url = "https://hummus.sys42.net/api/v6"
@@ -8,7 +12,8 @@ base_url = "https://hummus.sys42.net/api/v6"
 def sendMessage(channelID, message): #send message function
     headers = {
         'Authorization': f'Bot {token}',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'User-Agent': agent
         }
     data = json.dumps({'content': message,
                             'tts': False})
@@ -17,14 +22,16 @@ def sendMessage(channelID, message): #send message function
 def kick(guildID, userID): #kick a person
     headers = {
         'Authorization': f'Bot {token}',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'User-Agent': agent
         }
     requests.delete(url=f"{base_url}/guilds/{guildID}/members/{userID}", headers=headers)
 
 def nick(guildID,userID, nick): #set a person's nickname
     headers = {
         'Authorization': f'Bot {token}',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'User-Agent': agent
         }
     if nick == "None":
         data = json.dumps({'nick': ""})
@@ -61,7 +68,7 @@ def check(content,channelID, memberID, guildID, data): #here is where all comman
             sendMessage(channelID, "**__Error:__ Please ping someone to kick them.**")
 
 def main(): #websocket connections and reconnections
-    with connect("wss://hummus-gateway.sys42.net/?encoding=json&v=6") as websocket:
+    with connect("wss://hummus-gateway.sys42.net/?encoding=json&v=6",user_agent_header=agent) as websocket:
         print("restarting...")
         true = True
         websocket.send(json.dumps({
