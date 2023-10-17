@@ -1,7 +1,10 @@
 # Hummus Websocket Bot
 Raw basic websocket connections specifically built for Hummus and similar sites (ig it can be used on discord too but why not just use [Discord.py?](https://github.com/Rapptz/discord.py)), can be used in old discord revivals like Hummus and Oldground.
 
-## Notices:
+# Massive Important:
+If you want to create a bot on Hummus, use my [newer Hummus.py package!](https://github.com/LG125YT/Hummus.py) It is still very much in development but it makes code a lot cleaner and easier to use! This repository is still up for archive purposes or something ig.
+
+## Other Notices:
 - If you are working with a website like Fosscord/Spacebar, please use [Fossbotpy](https://gitlab.com/arandomnewaccount/fossbotpy) instead.
 - On Oldground the bot may show as online, even if the host file is not running. This is most likely a server error.
 - If you run into a 403 error when sending a request, you are likely not including either the token or the user agent within the headers.
